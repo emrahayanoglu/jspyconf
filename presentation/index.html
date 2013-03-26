@@ -254,7 +254,8 @@ EM.run {
 						<li class="fragment">Açık Kaynak Kodlu Mesaj Broker Yazılımıdır</li>
 						<li class="fragment">AMQP(Advanced Messagbe Queuing Protocol)'u uygular</li>
 						<li class="fragment">Erlang diliyle yazılmıştır</li>
-						<li class="fragment">Kullananlar: BBC, NASA, Digg, SecondLife, Del.icio.us</li>
+						<li class="fragment">Pub-Sub, Routing, Topics destekler</li>
+						<li class="fragment">Kullananlar: BBC, NASA, Digg, SecondLife, Del.icio.us, Huffington Post</li>
 					</ul>
 				</section>
 
@@ -263,7 +264,7 @@ EM.run {
 					<ul>
 						<li class="fragment">Python
 							<ul>
-								<li class="fragment">Tika</li>
+								<li class="fragment">Pika</li>
 							</ul>
 						</li>
 						<li class="fragment">Ruby
@@ -275,8 +276,108 @@ EM.run {
 				</section>
 
 				<section>
-					<h2>XMPP Protokolu</h2>
+					<h2>Python - Pika Publisher</h2>
+					<pre><code>#!/usr/bin/env python
+import pika
+
+connection = pika.BlockingConnection(pika.ConnectionParameters(
+        host='localhost'))
+channel = connection.channel()
+
+channel.queue_declare(queue='tasks')
+
+channel.basic_publish(exchange='',
+                      routing_key='tasks',
+                      body='Hello World!')
+print " [x] Sent 'Hello World!'"
+connection.close()</code></pre>
+				</section>	
+
+				<section>
+					<h2>Python - Pika Subscriber</h2>
+					<pre><code>#!/usr/bin/env python
+import pika
+
+connection = pika.BlockingConnection(pika.ConnectionParameters(
+        host='localhost'))
+channel = connection.channel()
+channel.queue_declare(queue='tasks')
+print ' [*] Waiting for messages. To exit press CTRL+C'
+
+def callback(ch, method, properties, body):
+    print " [x] Received %r" % (body,)
+
+channel.basic_consume(callback,
+                      queue='tasks',
+                      no_ack=True)
+
+channel.start_consuming()</code></pre>
 				</section>
+
+				<section>
+					<h2>Ruby - AMQP Publisher</h2>
+					<pre><code>require 'rubygems'
+require 'amqp'
+require 'mq'
+ 
+AMQP.start(:host => 'localhost') do
+ MQ.queue('tasks').publish("hello world")
+ MQ.queue('tasks').publish("it is #{Time.now}")
+ AMQP.stop { EM.stop }
+end</code></pre>
+				</section>	
+
+				<section>
+					<h2>Ruby - AMQP Subscriber</h2>
+					<pre><code>require 'rubygems'
+require 'amqp'
+require 'mq'
+ 
+AMQP.start(:host => 'localhost' ) do
+ q = MQ.new.queue('tasks')
+ q.subscribe do |msg|
+   puts msg
+ end
+end</code></pre>
+				</section>
+
+				<section>
+					<h2>Demo</h2>
+				</section>	
+
+				<section>
+					<h2>XMPP Protokolü</h2>
+					<ul>
+						<li class="fragment"></li>
+						<li class="fragment"></li>
+						<li class="fragment"></li>
+						<li class="fragment"></li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>XMPP - Clients</h2>
+					<ul>
+						<li class="fragment">Python
+							<ul>
+								<li class="fragment">SleekXMPP</li>
+							</ul>
+						</li>
+						<li class="fragment">Ruby
+							<ul>
+								<li class="fragment">XMPP4R</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Python - SleekXMPP</h2>
+				</section>
+
+				<section>
+					<h2>Ruby - XMPP4R</h2>
+				</section>				
 
 				<section>
 					<h2>Demo</h2>
