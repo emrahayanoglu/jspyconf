@@ -116,10 +116,64 @@
 
 				<section>
 					<h2>Genel Mimari</h2>
+					<!-- Buraya Mimariyi Anlatacak Interaktif Bir Resim Gelecek -->
 				</section>
 
 				<section>
-					<h2>WebSocket ve web-socket-js</h2>
+					<h2>WebSocket</h2>
+					<ul>
+						<li class="fragment">HTML 5 ile gelen low-latency client-server haberleşmeyi sağlar</li>
+						<li class="fragment">Ajax ve Ajax Long Polling'deki fazlalıkları atar</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>WebSocket API</h2>
+					<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;	
+  // Write your code in the same way as for native WebSocket:
+  var ws = new WebSocket(&quot;ws://example.com:10081/&quot;);
+  ws.onopen = function() {
+    ws.send(&quot;Hello&quot;);  // Sends a message.
+  };
+  ws.onmessage = function(e) {
+    // Receives a message.
+    alert(e.data);
+  };
+  ws.onclose = function() {
+    alert(&quot;closed&quot;);
+  };
+&lt;/script&gt;</code></pre>
+				</section>
+
+				<section>
+					<h2>web-socket-js</h2>
+					<ul>
+						<li class="fragment">Alt yapı olarak Flash Socket'i ve ExternalInterface'i kullanır</li>
+						<li class="fragment">HTML 5 destekli tarayıcı bulunmadığında iyi bir seçenektir</li>
+						<li class="fragment">Tamamen WebSocket API benzeri bir API'a sahiptir</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>web-socket-js</h2>
+					<pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;swfobject.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;web_socket.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+  // Let the library know where WebSocketMain.swf is:
+  WEB_SOCKET_SWF_LOCATION = &quot;WebSocketMain.swf&quot;;
+  // Write your code in the same way as for native WebSocket:
+  var ws = new WebSocket(&quot;ws://example.com:10081/&quot;);
+  ws.onopen = function() {
+    ws.send(&quot;Hello&quot;);  // Sends a message.
+  };
+  ws.onmessage = function(e) {
+    // Receives a message.
+    alert(e.data);
+  };
+  ws.onclose = function() {
+    alert(&quot;closed&quot;);
+  };
+&lt;/script&gt;</code></pre>
 				</section>				
 
 				<section>
