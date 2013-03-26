@@ -178,11 +178,12 @@
 
 				<section>
 					<h2>WebSocket Server</h2>
+					<p>Gercek Zamanlı Uygulamalar için Asenkron I/O bir WebSocket Server'a ihtiyacimiz var (Low-Latency)</p>
 					<ul>
 						<li class="fragment">Python
 							<ul>
-								<li class="fragment">Twisted</li>
 								<li class="fragment">Tornado</li>
+								<li class="fragment">Twisted</li>
 							</ul>
 						</li>
 						<li class="fragment">Ruby
@@ -194,15 +195,83 @@
 				</section>
 
 				<section>
-					<h2>Python - Tornado</h2>
+					<h2>Python - Tornado WebSocket Server</h2>
+					<p>Friendfeed'in gucunu veren Web Server</p>
+					<pre><code>import tornado.httpserver
+import tornado.websocket
+import tornado.ioloop
+import tornado.web
+
+class WSHandler(tornado.websocket.WebSocketHandler):
+    def open(self):
+        print 'new connection'
+        self.write_message("Hello World")
+      
+    def on_message(self, message):
+        print 'message received %s' % message
+ 
+    def on_close(self):
+      print 'connection closed'
+
+application = tornado.web.Application([
+    (r'/ws', WSHandler),
+])
+
+if __name__ == "__main__":
+    http_server = tornado.httpserver.HTTPServer(application)
+    http_server.listen(8888)
+    tornado.ioloop.IOLoop.instance().start()</code></pre>
 				</section>
 
 				<section>
-					<h2>Ruby - EventMachine</h2>
+					<h2>Ruby - EventMachine WebSocket Server</h2>
+					<pre><code>require 'em-websocket'
+
+EM.run {
+  EM::WebSocket.run(:host => "0.0.0.0", :port => 8080) do |ws|
+    ws.onopen { |handshake|
+      puts "WebSocket connection open"
+      # Publish message to the client
+      ws.send "Hello Client, you connected to #{handshake.path}"
+    }
+    ws.onclose { puts "Connection closed" }
+
+    ws.onmessage { |msg|
+      puts "Recieved message: #{msg}"
+      ws.send "Pong: #{msg}"
+    }
+  end
+}</code></pre>
+				</section>
+
+				<section>
+					<h2>Demo - WebSocket Server</h2>
 				</section>
 
 				<section>
 					<h2>RabbitMQ ve Mesajlasma</h2>
+					<ul>
+						<li class="fragment">Açık Kaynak Kodlu Mesaj Broker Yazılımıdır</li>
+						<li class="fragment">AMQP(Advanced Messagbe Queuing Protocol)'u uygular</li>
+						<li class="fragment">Erlang diliyle yazılmıştır</li>
+						<li class="fragment">Kullananlar: BBC, NASA, Digg, SecondLife, Del.icio.us</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>RabbitMQ - Clients</h2>
+					<ul>
+						<li class="fragment">Python
+							<ul>
+								<li class="fragment">Tika</li>
+							</ul>
+						</li>
+						<li class="fragment">Ruby
+							<ul>
+								<li class="fragment">AMQP</li>
+							</ul>
+						</li>
+					</ul>
 				</section>
 
 				<section>
