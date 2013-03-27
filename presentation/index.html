@@ -315,27 +315,45 @@ channel.start_consuming()</code></pre>
 				</section>
 
 				<section>
-					<h2>Ruby - AMQP Publisher & Subscriber</h2>
-					<pre><code>require "rubygems"
-require "amqp"
+					<h2>Ruby - AMQP Publisher</h2>
+					<pre><code>require "amqp"
 
-EventMachine.run do
-  connection = AMQP.connect(:host => '127.0.0.1')
-  puts "Connected to AMQP broker. Running #{AMQP::VERSION} version of the gem..."
- 
+AMQP.start(:host => "localhost") do |connection|
   channel = AMQP::Channel.new(connection)
-  queue = channel.queue("amqpgem.examples.helloworld", :auto_delete => true)
-  exchange = channel.direct("")
-  
-  queue.subscribe do |payload|
-    puts "Received a message: #{payload}. Disconnecting..."
-    connection.close { EventMachine.stop }
+  queue   = channel.queue("hello")
+
+  channel.default_exchange.publish("Hello World!", :routing_key => queue.name)
+  puts " [x] Sent 'Hello World!'"
+
+  EM.add_timer(0.5) do
+    connection.close do
+      EM.stop { exit }
+    end
   end
- 
-  exchange.publish "Hello, world!", :routing_key => queue.name
 end</code></pre>
 				</section>	
 
+				<section>
+					<h2>Ruby - AMQP Subscriber</h2>
+					<pre><code>require "amqp"
+
+AMQP.start(:host => "localhost") do |connection|
+  channel = AMQP::Channel.new(connection)
+  queue   = channel.queue("hello")
+
+  Signal.trap("INT") do
+    connection.close do
+      EM.stop { exit }
+    end
+  end
+
+  puts " [*] Waiting for messages. To exit press CTRL+C"
+
+  queue.subscribe do |body|
+    puts " [x] Received #{body}"
+  end
+end</code></pre>
+				</section>
 
 				<section>
 					<h2>Demo</h2>
