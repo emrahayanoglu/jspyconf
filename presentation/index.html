@@ -252,7 +252,7 @@ EM.run {
 					<h2>RabbitMQ ve Mesajlasma</h2>
 					<ul>
 						<li class="fragment">Açık Kaynak Kodlu Mesaj Broker Yazılımıdır</li>
-						<li class="fragment">AMQP(Advanced Messagbe Queuing Protocol)'u uygular</li>
+						<li class="fragment">AMQP(Advanced Message Queuing Protocol)'u uygular</li>
 						<li class="fragment">Erlang diliyle yazılmıştır</li>
 						<li class="fragment">Pub-Sub, Routing, Topics destekler</li>
 						<li class="fragment">Kullananlar: BBC, NASA, Digg, SecondLife, Del.icio.us, Huffington Post</li>
@@ -348,11 +348,16 @@ end</code></pre>
 				<section>
 					<h2>XMPP Protokolü</h2>
 					<ul>
-						<li class="fragment"></li>
-						<li class="fragment"></li>
-						<li class="fragment"></li>
-						<li class="fragment"></li>
+						<li class="fragment">XMPP(Extendable Messaging and Presence Protocol) XML mesaj tabanlı uygulamalar için haberleşme protokolüdür</li>
+						<li class="fragment">Jabber adıyla da bilinir. (Gtalk, Facebook Chat, Gabber, v.b)</li>
+						<li class="fragment">Genişletilebilir olmasından dolayı VoIP, Video, File Transferi, Multiplayer Oyun gibi alanlarda oldukça kullanışlıdır</li>
+						<li class="fragment">Protokolün detayları için: <a href="http://www.xmpp.org">XMPP Foundation</a></li>
 					</ul>
+				</section>
+
+				<section>
+					<h2>XMPP - Mimari</h2>
+					<img src="img/xmpp-wikibooks.png">
 				</section>
 
 				<section>
@@ -373,14 +378,78 @@ end</code></pre>
 
 				<section>
 					<h2>Python - SleekXMPP</h2>
+					<pre><code>#!/usr/bin/env python
+import sys
+sys.path.append("../3rdParty")
+import logging
+import sleekxmpp
+def main() : 
+  bot = EchoBot("echobot@wonderland.lit/HelloWorld", "mypass")
+  bot.run() 
+
+class EchoBot : 
+  def __init__(self, jid, password) : 
+    self.xmpp = sleekxmpp.ClientXMPP(jid, password) 
+    self.xmpp.add_event_handler("session_start", self.handleXMPPConnected) 
+    self.xmpp.add_event_handler("message", self.handleIncomingMessage) 
+
+  def run(self) : 
+    self.xmpp.connect() 
+    self.xmpp.process(threaded=False) 
+
+  def handleXMPPConnected(self, event): 
+    self.xmpp.sendPresence(pstatus = "Send me a message")
+
+  def handleIncomingMessage(self, message) : 
+    self.xmpp.sendMessage(message["from"], message["body"]) 
+
+if __name__ == "__main__" :
+  main()</code></pre>
 				</section>
 
 				<section>
 					<h2>Ruby - XMPP4R</h2>
+					<pre><code>require 'xmpp4r/client'
+# Create a *very* simple dictionary using a hash
+hash = {}
+hash['ruby'] = 'Greatest little object oriented scripting language'
+hash['xmpp4r'] = 'Simple XMPP library for ruby'
+hash['xmpp'] = 'Extensible Messaging and Presence Protocol'
+
+# Connect to the server and authenticate
+jid = Jabber::JID::new('bot@default.rs/Home')
+cl = Jabber::Client::new(jid)
+cl.connect
+cl.auth('password')
+
+# Indicate our presence to the server
+cl.send Jabber::Presence::new
+
+# Send a salutation to a given user that we're ready
+salutation = Jabber::Message::new( 'hal@default.rs', 'DictBot ready' )
+salutation.set_type(:chat).set_id('1')
+cl.send salutation 
+
+# Add a message callback to respond to peer requests
+cl.add_message_callback do |inmsg|
+    # Lookup the word in the dictionary
+    resp = hash[inmsg.body]
+    if resp == nil
+      resp = "don't know about " + inmsg.body
+    end
+
+    # Send the response
+    outmsg = Jabber::Message::new( inmsg.from, resp )
+    outmsg.set_type(:chat).set_id('1')
+    cl.send outmsg
+end
+# Run
+while 1
+end</code></pre>	
 				</section>				
 
 				<section>
-					<h2>Demo</h2>
+					<h2>Olark Clone Demo</h2>
 				</section>
 
 				<section>
