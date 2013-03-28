@@ -42,6 +42,8 @@
 					<p>
 						<small>Created by <a href="http://www.emrahayanoglu.com">Emrah Ayanoglu</a> / <a href="http://www.stm.com.tr">STM A.S</a></small>
 					</p>
+					<aside class="notes">
+					</aside>
 				</section>
 
 				<section>
@@ -57,46 +59,64 @@
 						<li class="fragment">Demo</li>
 						<li class="fragment">Sorular</li>
 					</ol>
+					<aside class="notes">
+					</aside>
 				</section>
 
 				<section>
 					<h2>Gercek Zamanlı Web Uygulamaları</h2>
 					<p>Server tarafından iletilen bilginin, en hızlı şekilde(low latency) client'lara aktarıldığı uygulamalardır.</p>
+					<aside class="notes">
+					</aside>
 				</section>
 
 				<section>
 					<h2>Live Chat<h2>
 					<img src="img/liveperson3.png">
+					<aside class="notes">
+					</aside>
 				</section>
 
 				<section>
 					<h2>Multiplayer Oyunlar<h2>
 					<img src="img/zynga-poker.png">
+					<aside class="notes">
+					</aside>
 				</section>
 
 				<section>
 					<h2>Finans<h2>
 					<img src="img/finance.jpg">
+					<aside class="notes">
+					</aside>
 				</section>
 
 				<section>
 					<h2>Gercek Zamanlı Analitikler<h2>
 					<img src="img/real-time-analytics.png">
+					<aside class="notes">
+					</aside>
 				</section>
 
 				<section>
 					<h2>Ortak Çalısma Uygulamaları<h2>
 					<img src="img/collaboration-tool.png">
+					<aside class="notes">
+					</aside>
 				</section>
 
 				<section>
 					<h2>Aktivite Akımları<h2>
 					<img src="img/activity-stream.png">
+					<aside class="notes">
+					</aside>
 				</section>
 
 				<section>
 					<h2>Ornek bir Startup</h2>
 					<img src="img/logo-olark.png">
+					<aside class="notes">
+					</aside>
 				</section>
 
 				<section>
@@ -107,16 +127,22 @@
 						<li class="fragment">Kolay entegre edilebilir, herhangi bir Jabber/XMPP Client sayesinde Müşteri ile konuşulabilir.</li>
 						<li class="fragment">Ziyaretçinin gerekli her türlü bilgiye(lokasyon, web gezi bilgileri, v.b) Chat Client'tan ulaşılabilir.</li>	
 					</ul>
+					<aside class="notes">
+					</aside>
 				</section>
 
 				<section>
 					<h2>Olark</h2>
 					<img src="img/buddy-list.png">
+					<aside class="notes">
+					</aside>
 				</section>
 
 				<section>
 					<h2>Genel Mimari</h2>
-					<!-- Buraya Mimariyi Anlatacak Interaktif Bir Resim Gelecek -->
+					<img src="img/arch1.png">
+					<aside class="notes">
+					</aside>
 				</section>
 
 				<section>
@@ -125,24 +151,28 @@
 						<li class="fragment">HTML 5 ile gelen low-latency client-server haberleşmeyi sağlar</li>
 						<li class="fragment">Ajax ve Ajax Long Polling'deki fazlalıkları atar</li>
 					</ul>
+					<aside class="notes">
+					</aside>
 				</section>
 
 				<section>
 					<h2>WebSocket API</h2>
 					<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;	
-  // Write your code in the same way as for native WebSocket:
   var ws = new WebSocket(&quot;ws://example.com:10081/&quot;);
   ws.onopen = function() {
     ws.send(&quot;Hello&quot;);  // Sends a message.
   };
   ws.onmessage = function(e) {
-    // Receives a message.
+    // Mesaj Geldi Olayi
     alert(e.data);
   };
   ws.onclose = function() {
+     // Baglanti Kapandi Olayi
     alert(&quot;closed&quot;);
   };
 &lt;/script&gt;</code></pre>
+					<aside class="notes">
+					</aside>
 				</section>
 
 				<section>
@@ -152,6 +182,8 @@
 						<li class="fragment">HTML 5 destekli tarayıcı bulunmadığında iyi bir seçenektir</li>
 						<li class="fragment">Tamamen WebSocket API benzeri bir API'a sahiptir</li>
 					</ul>
+					<aside class="notes">
+					</aside>
 				</section>
 
 				<section>
@@ -159,21 +191,23 @@
 					<pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;swfobject.js&quot;&gt;&lt;/script&gt;
 &lt;script type=&quot;text/javascript&quot; src=&quot;web_socket.js&quot;&gt;&lt;/script&gt;
 &lt;script type=&quot;text/javascript&quot;&gt;
-  // Let the library know where WebSocketMain.swf is:
+  // WebSocketMain.swf'in yerini belirtiyoruz
   WEB_SOCKET_SWF_LOCATION = &quot;WebSocketMain.swf&quot;;
-  // Write your code in the same way as for native WebSocket:
+  // WebSocket API'la ayni API oldugundan aynen kullaniyoruz
   var ws = new WebSocket(&quot;ws://example.com:10081/&quot;);
   ws.onopen = function() {
     ws.send(&quot;Hello&quot;);  // Sends a message.
   };
   ws.onmessage = function(e) {
-    // Receives a message.
+    // Mesaj Geldi Olayi
     alert(e.data);
   };
   ws.onclose = function() {
     alert(&quot;closed&quot;);
   };
 &lt;/script&gt;</code></pre>
+					<aside class="notes">
+					</aside>
 				</section>				
 
 				<section>
@@ -192,6 +226,8 @@
 							</ul>
 						</li>
 					</ul>
+					<aside class="notes">
+					</aside>
 				</section>
 
 				<section>
@@ -204,14 +240,14 @@ import tornado.web
 
 class WSHandler(tornado.websocket.WebSocketHandler):
     def open(self):
-        print 'new connection'
+        print 'yeni baglanti'
         self.write_message("Hello World")
       
     def on_message(self, message):
-        print 'message received %s' % message
+        print 'mesaj alindi %s' % message
  
     def on_close(self):
-      print 'connection closed'
+      print 'baglanti kapandi'
 
 application = tornado.web.Application([
     (r'/ws', WSHandler),
@@ -221,6 +257,8 @@ if __name__ == "__main__":
     http_server = tornado.httpserver.HTTPServer(application)
     http_server.listen(8888)
     tornado.ioloop.IOLoop.instance().start()</code></pre>
+    				<aside class="notes">
+					</aside>
 				</section>
 
 				<section>
@@ -231,21 +269,25 @@ EM.run {
   EM::WebSocket.run(:host => "0.0.0.0", :port => 8080) do |ws|
     ws.onopen { |handshake|
       puts "WebSocket connection open"
-      # Publish message to the client
-      ws.send "Hello Client, you connected to #{handshake.path}"
+      # Mesaji client'lara yayinla
+      ws.send "Merhaba Client, suraya #{handshake.path} baglandin"
     }
-    ws.onclose { puts "Connection closed" }
+    ws.onclose { puts "Baglanti Kapandi" }
 
     ws.onmessage { |msg|
-      puts "Recieved message: #{msg}"
+      puts "Mesaj Alindi: #{msg}"
       ws.send "Pong: #{msg}"
     }
   end
 }</code></pre>
+					<aside class="notes">
+					</aside>
 				</section>
 
 				<section>
 					<h2>Demo - WebSocket Server</h2>
+					<aside class="notes">
+					</aside>
 				</section>
 
 				<section>
@@ -257,6 +299,8 @@ EM.run {
 						<li class="fragment">Pub-Sub, Routing, Topics destekler</li>
 						<li class="fragment">Kullananlar: BBC, NASA, Digg, SecondLife, Del.icio.us, Huffington Post</li>
 					</ul>
+					<aside class="notes">
+					</aside>
 				</section>
 
 				<section>
@@ -273,6 +317,8 @@ EM.run {
 							</ul>
 						</li>
 					</ul>
+					<aside class="notes">
+					</aside>
 				</section>
 
 				<section>
@@ -291,6 +337,8 @@ channel.basic_publish(exchange='',
                       body='Hello World!')
 print " [x] Sent 'Hello World!'"
 connection.close()</code></pre>
+					<aside class="notes">
+					</aside>
 				</section>	
 
 				<section>
@@ -302,7 +350,7 @@ connection = pika.BlockingConnection(pika.ConnectionParameters(
         host='localhost'))
 channel = connection.channel()
 channel.queue_declare(queue='tasks')
-print ' [*] Waiting for messages. To exit press CTRL+C'
+print ' [*] Mesajlar Bekleniyor. Cikmak icin CTRL+C'
 
 def callback(ch, method, properties, body):
     print " [x] Received %r" % (body,)
@@ -312,51 +360,69 @@ channel.basic_consume(callback,
                       no_ack=True)
 
 channel.start_consuming()</code></pre>
+					<aside class="notes">
+					</aside>
 				</section>
 
 				<section>
-					<h2>Ruby - AMQP Publisher</h2>
+					<h2>Ruby - AMQP Publisher & Subscriber</h2>
 					<pre><code>require "amqp"
-
-AMQP.start(:host => "localhost") do |connection|
-  channel = AMQP::Channel.new(connection)
-  queue   = channel.queue("hello")
-
-  channel.default_exchange.publish("Hello World!", :routing_key => queue.name)
-  puts " [x] Sent 'Hello World!'"
-
-  EM.add_timer(0.5) do
-    connection.close do
-      EM.stop { exit }
-    end
+EventMachine.run do
+  connection = AMQP.connect(:host => '127.0.0.1')
+  puts "AMQP Broker a baglanildi."
+ 
+  channel  = AMQP::Channel.new(connection)
+  queue    = channel.queue("amqpgem.examples.helloworld", :auto_delete => true)
+  exchange = channel.direct("")
+ 
+  queue.subscribe do |payload|
+    puts "Mesaj Alindi: #{payload}. Disconnecting..."
+    connection.close { EventMachine.stop }
   end
+ 
+  exchange.publish "Hello, world!", :routing_key => queue.name
 end</code></pre>
+					<aside class="notes">
+					</aside>
 				</section>	
 
 				<section>
-					<h2>Ruby - AMQP Subscriber</h2>
+					<h2>Ruby AMQP - Birden - Çoka Aktarım</h2>
 					<pre><code>require "amqp"
-
-AMQP.start(:host => "localhost") do |connection|
-  channel = AMQP::Channel.new(connection)
-  queue   = channel.queue("hello")
-
-  Signal.trap("INT") do
-    connection.close do
-      EM.stop { exit }
-    end
-  end
-
-  puts " [*] Waiting for messages. To exit press CTRL+C"
-
-  queue.subscribe do |body|
-    puts " [x] Received #{body}"
-  end
+ 
+AMQP.start("amqp://dev.rabbitmq.com:5672") do |connection|
+ channel  = AMQP::Channel.new(connection)
+ exchange = channel.fanout("nba.scores")
+ 
+ channel.queue("joe", :auto_delete => true).bind(exchange).subscribe do |payload|
+    puts "#{payload} => joe"
+ end
+ 
+ channel.queue("aaron", :auto_delete => true).bind(exchange).subscribe do |payload|
+    puts "#{payload} => aaron"
+ end
+ 
+ channel.queue("bob", :auto_delete => true).bind(exchange).subscribe do |payload|
+    puts "#{payload} => bob"
+ end
+ 
+ exchange.publish("BOS 101, NYK 89").publish("ORL 85, ALT 88")
+ 
+  # disconnect & exit after 2 seconds
+ EventMachine.add_timer(2) do
+    exchange.delete
+ 
+    connection.close { EventMachine.stop }
+ end
 end</code></pre>
+					<aside class="notes">
+					</aside>
 				</section>
 
 				<section>
 					<h2>Demo</h2>
+					<aside class="notes">
+					</aside>
 				</section>	
 
 				<section>
@@ -367,11 +433,15 @@ end</code></pre>
 						<li class="fragment">Genişletilebilir olmasından dolayı VoIP, Video, File Transferi, Multiplayer Oyun gibi alanlarda oldukça kullanışlıdır</li>
 						<li class="fragment">Protokolün detayları için: <a href="http://www.xmpp.org">XMPP Foundation</a></li>
 					</ul>
+					<aside class="notes">
+					</aside>
 				</section>
 
 				<section>
 					<h2>XMPP - Mimari</h2>
 					<img src="img/xmpp-wikibooks.png">
+					<aside class="notes">
+					</aside>
 				</section>
 
 				<section>
@@ -388,91 +458,116 @@ end</code></pre>
 							</ul>
 						</li>
 					</ul>
+					<aside class="notes">
+					</aside>
 				</section>
 
 				<section>
 					<h2>Python - SleekXMPP</h2>
-					<pre><code>#!/usr/bin/env python
-import sys
-sys.path.append("../3rdParty")
-import logging
+					<pre><code>import sys
 import sleekxmpp
-def main() : 
-  bot = EchoBot("echobot@wonderland.lit/HelloWorld", "mypass")
+def main(): 
+  bot = EchoBot("jspyconftest@jabber.org", "12345678")
   bot.run() 
 
-class EchoBot : 
+class EchoBot: 
   def __init__(self, jid, password) : 
     self.xmpp = sleekxmpp.ClientXMPP(jid, password) 
     self.xmpp.add_event_handler("session_start", self.handleXMPPConnected) 
     self.xmpp.add_event_handler("message", self.handleIncomingMessage) 
 
-  def run(self) : 
+  def run(self):
     self.xmpp.connect() 
     self.xmpp.process(threaded=False) 
 
-  def handleXMPPConnected(self, event): 
+  def handleXMPPConnected(self, event):
+    print "Baglandi" 
     self.xmpp.sendPresence(pstatus = "Send me a message")
+    self.xmpp.sendMessage("jspyconftest@jabber.org","Hello World")
 
-  def handleIncomingMessage(self, message) : 
+  def handleIncomingMessage(self, message): 
     self.xmpp.sendMessage(message["from"], message["body"]) 
 
 if __name__ == "__main__" :
-  main()</code></pre>
+    main()</code></pre>
+					<aside class="notes">
+					</aside>
 				</section>
 
 				<section>
 					<h2>Ruby - XMPP4R</h2>
-					<pre><code>require 'xmpp4r/client'
-# Create a *very* simple dictionary using a hash
+					<pre><code>require 'rubygems'
+require 'xmpp4r/client'
+# Hash yardimiyla ufak bir sozluk olusturuyoruz
 hash = {}
 hash['ruby'] = 'Greatest little object oriented scripting language'
 hash['xmpp4r'] = 'Simple XMPP library for ruby'
 hash['xmpp'] = 'Extensible Messaging and Presence Protocol'
 
-# Connect to the server and authenticate
-jid = Jabber::JID::new('bot@default.rs/Home')
+# XMPP Server baglan ve kullanici adi ve sifreyi dogrula
+jid = Jabber::JID::new('jspyconftest@jabber.org')
 cl = Jabber::Client::new(jid)
 cl.connect
-cl.auth('password')
+cl.auth('12345678')
 
-# Indicate our presence to the server
+# Baglandigini ve online oldugunu bildir
 cl.send Jabber::Presence::new
 
-# Send a salutation to a given user that we're ready
-salutation = Jabber::Message::new( 'hal@default.rs', 'DictBot ready' )
+# Belirtilen Client'a mesaj yolla
+salutation = Jabber::Message::new( 'jspyconftest@jabber.org', 'DictBot ready' )
 salutation.set_type(:chat).set_id('1')
 cl.send salutation 
 
-# Add a message callback to respond to peer requests
+# Mesaj callback olusturarak gelen mesajlari kontrol et
 cl.add_message_callback do |inmsg|
-    # Lookup the word in the dictionary
     resp = hash[inmsg.body]
     if resp == nil
       resp = "don't know about " + inmsg.body
     end
 
-    # Send the response
+    # Cevabini yolla
     outmsg = Jabber::Message::new( inmsg.from, resp )
     outmsg.set_type(:chat).set_id('1')
     cl.send outmsg
 end
-# Run
 while 1
 end</code></pre>	
+					<aside class="notes">
+					</aside>
 				</section>				
 
 				<section>
 					<h2>Olark Clone Demo</h2>
+					<aside class="notes">
+					</aside>
+				</section>
+
+				<section>
+					<h2>Sonuç</h2>
+					<ul>
+						<li class="fragment">Gerçek Zamanlı Web Uygulamaları Artık Her Yerde!</li>
+						<li class="fragment">WebSocket Server: Python Tornado, Ruby EventMachine</li>
+						<li class="fragment">Message Queue: RabbitMQ, Python Pika, Ruby AMQP</li>
+						<li class="fragment">XMPP Protokolü: Python SleekXMPP, Ruby XMPP4R</li>
+					</ul>
+					<aside class="notes">
+					</aside>
 				</section>
 
 				<section>
 					<h1>Sorular!</h1>
+					<aside class="notes">
+					</aside>
 				</section>
 
 				<section>
-					<h1>THE END</h1>
+					<h1>Tesekkürler :)</h1>
+					<h2>THE END</h2>
 					<h3>BY Emrah Ayanoglu</h3>
+					<p>Twitter: <a href="https://twitter.com/emrahayanoglu">@emrahayanoglu</a></p>
+					<p>Github: <a href="https://github.com/emrahayanoglu">emrahayanoglu</a></p>
+					<aside class="notes">
+					</aside>
 				</section>
 
 			</div>
