@@ -11,17 +11,17 @@ class WSHandler(tornado.websocket.WebSocketHandler):
         self.write_message("Hello World")
         self.connection = pika.BlockingConnection(
             pika.ConnectionParameters(host='localhost', port=5001))
-        self.channelSend = connection.channel()
-        self.channelReceive = connection.channel()
+        self.channelSend = self.connection.channel()
+        self.channelReceive = self.connection.channel()
         self.channelSend.exchange_declare(exchange='jspyconftest.send',
                          type='fanout')
         self.channelReceive.exchange_declare(exchange='jspyconftest.receive',
                          type='fanout')
-        self.result = channel.queue_declare(exclusive=True)
-        self.queue_name = result.method.queue
+        self.result = self.channelReceive.queue_declare(exclusive=True)
+        self.queue_name = self.result.method.queue
         self.channelReceive.queue_bind(exchange='jspyconftest.receive',
-                   queue=queue_name)
-        self.channelReceive.basic_consume(callback,
+                   queue=self.queue_name)
+        self.channelReceive.basic_consume(self.callback,
                               queue=self.queue_name,
                               no_ack=True)
         self.channelReceive.start_consuming()
@@ -36,6 +36,7 @@ class WSHandler(tornado.websocket.WebSocketHandler):
     def callback(ch, method, properties, body):
         print " [x] %r" % (body,)
         #send message back to the websocket
+        self.write_message(body)
  
     def on_close(self):
         print 'connection closed'

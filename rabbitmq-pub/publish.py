@@ -5,11 +5,11 @@ connection = pika.BlockingConnection(pika.ConnectionParameters(
         host='localhost', port=5001))
 channel = connection.channel()
 
-channel.exchange_declare(exchange='logs',
+channel.exchange_declare(exchange='jspyconf.helloworld2',
                          type='fanout')
 
-message = ' '.join(sys.argv[1:]) or "info: Hello World!"
-channel.basic_publish(exchange='logs',
+message = "Hello World!"
+channel.basic_publish(exchange='jspyconf.helloworld2',
                       routing_key='',
                       body=message)
 print " [x] Sent %r" % (message,)

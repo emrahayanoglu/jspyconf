@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Web-Socket-Js Demo</title>
+    <title>HTML 5 WebSocket Demo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -28,46 +28,56 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="#">Project name</a>
+          <a class="brand" href="#">JsPyConf</a>
           <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
-            </ul>
           </div><!--/.nav-collapse -->
         </div>
       </div>
     </div>
 
     <div class="container">
-
-      <h1>Bootstrap starter template</h1>
-      <p>Use this document as a way to quick start any new project.<br> All you get is this message and a barebones HTML document.</p>
-
+      <form>
+        <fieldset>
+          <legend>Gerçek Zamanlı Web Demo</legend>
+          <div class="input-append">
+            <input class="span9" id="chatText" type="text">
+            <button class="btn sendMsgBtn" type="button">Gönder!</button>
+          </div>
+          <textarea id="chatArea" class="span10" rows="20"></textarea>
+        </fieldset>
+      </form>
     </div> <!-- /container -->
 
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/swfobject.js"></script>
-    <script type="text/javascript" src="js/web_socket.js"></script>
     <script type="text/javascript">
 
-      // Let the library know where WebSocketMain.swf is:
-      WEB_SOCKET_SWF_LOCATION = "swf/WebSocketMain.swf";
-
-      // Write your code in the same way as for native WebSocket:
       var ws = new WebSocket("ws://localhost:8888/ws");
       ws.onopen = function() {
-        ws.send("Hello");  // Sends a message.
+        //ws.send("Hello");  // Sends a message.
+        $("#chatArea").val("Baglanti Gerceklesti");
+        ws.send("Connection Opened");
       };
       ws.onmessage = function(e) {
-        // Receives a message.
-        alert(e.data);
+        console.log(e);
+        var last = $("#chatArea").val();
+        $("#chatArea").val(e.data + "\n" + last);
       };
       ws.onclose = function() {
-        alert("closed");
+        var last = $("#chatArea").val();
+        $("#chatArea").val("Baglanti Kapandi\n" + last);
       };
+
+      $(document).ready(function(){
+         var webSocket = ws;
+         $(".sendMsgBtn").click(function(){
+            webSocket.send($("#chatText").val());
+            $("#chatText").val("");
+         });
+      });
 
     </script>
 

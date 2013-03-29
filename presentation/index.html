@@ -43,6 +43,7 @@
 						<small>Created by <a href="http://www.emrahayanoglu.com">Emrah Ayanoglu</a> / <a href="http://www.stm.com.tr">STM A.S</a></small>
 					</p>
 					<aside class="notes">
+						Sunumunu baslat. Topic'ten bahset… Kendinden bahset… Genel olarak neler yaptigindan bahset…  STM'den bahset ve farkliliklardan bahset...
 					</aside>
 				</section>
 
@@ -60,6 +61,7 @@
 						<li class="fragment">Sorular</li>
 					</ol>
 					<aside class="notes">
+						Bugun size anlatmak istedigim konulara soyle bakarsak sirasiyla diyerek basla… ve anlat… Demo olan bolumleri teker teker soyle… Ornek kodlar olacagini soyle...
 					</aside>
 				</section>
 
@@ -67,6 +69,7 @@
 					<h2>Gercek Zamanlı Web Uygulamaları</h2>
 					<p>Server tarafından iletilen bilginin, en hızlı şekilde(low latency) client'lara aktarıldığı uygulamalardır.</p>
 					<aside class="notes">
+						Gercek zamanli web uygulamalarinin ne oldugunu anlat. Low latency'den bahset… ajax'dan farkini anlat
 					</aside>
 				</section>
 
@@ -74,6 +77,7 @@
 					<h2>Live Chat<h2>
 					<img src="img/liveperson3.png">
 					<aside class="notes">
+						Simdi sirasiyla size ornekleri gostermek istiyorum… Ilk ornegimiz, herkesin tahmin edecegi gibi bir chat uygulamasi… live chat...
 					</aside>
 				</section>
 
@@ -81,6 +85,7 @@
 					<h2>Multiplayer Oyunlar<h2>
 					<img src="img/zynga-poker.png">
 					<aside class="notes">
+						Tabiki multiplayer oyunlar.. her oyuncunun yapmis oldugu hareketlerin aninda diger oyunculara gitmesi gerekiyor...
 					</aside>
 				</section>
 
@@ -88,6 +93,7 @@
 					<h2>Finans<h2>
 					<img src="img/finance.jpg">
 					<aside class="notes">
+						Borsa ve finans uygulamalari… Surekli degisen hisse senedi fiyatlari yine gercek zamanli uygulamalara ornek...
 					</aside>
 				</section>
 
@@ -95,6 +101,7 @@
 					<h2>Gercek Zamanlı Analitikler<h2>
 					<img src="img/real-time-analytics.png">
 					<aside class="notes">
+						Son iki senedir populer olan gercek zamanli analitikler… Anlik olarak web sitesini ziyaret edenlerle ilgili istatistikler verir
 					</aside>
 				</section>
 
@@ -102,6 +109,7 @@
 					<h2>Ortak Çalısma Uygulamaları<h2>
 					<img src="img/collaboration-tool.png">
 					<aside class="notes">
+						Ortak calisma alanlari (Collaboration) … mesela ornekteki gibi bir mockup tasarimi yapilirken hem beraber tasarlanmasi hemde mockup'in konusulmasi...
 					</aside>
 				</section>
 
@@ -109,6 +117,7 @@
 					<h2>Aktivite Akımları<h2>
 					<img src="img/activity-stream.png">
 					<aside class="notes">
+						Aktivite akimlari… aslinda twitter ile gelen bir yapi. artik bircok yerde gorebiliyoruz… bu da tamamen gercek zamanli olarak calismakta...
 					</aside>
 				</section>
 
@@ -116,6 +125,7 @@
 					<h2>Ornek bir Startup</h2>
 					<img src="img/logo-olark.png">
 					<aside class="notes">
+						Simdi size gercek zamanli bir web uygulamasini orneklemek icin benim begendigim bir startup'i anlatip onun tasarimini ve basitce kodlamasini yapmak istiyorum… Olark'i anlat…
 					</aside>
 				</section>
 
@@ -128,6 +138,7 @@
 						<li class="fragment">Ziyaretçinin gerekli her türlü bilgiye(lokasyon, web gezi bilgileri, v.b) Chat Client'tan ulaşılabilir.</li>	
 					</ul>
 					<aside class="notes">
+						Olark'in ozelliklerini sirala… En onemli ozelligi olan web'den jabber client ile erisimini anlat… ayrica basit olarak web istatistiklerini de gosterdigini anlat...
 					</aside>
 				</section>
 
@@ -135,6 +146,7 @@
 					<h2>Olark</h2>
 					<img src="img/buddy-list.png">
 					<aside class="notes">
+						Ornek resmi anlat… ve hangi detaylari gosterebildigini teker teker soyle… tabiki bu kullanmis oldugu teknolojilerle beraber oldugunu soyle...
 					</aside>
 				</section>
 
@@ -142,6 +154,7 @@
 					<h2>Genel Mimari</h2>
 					<img src="img/arch1.png">
 					<aside class="notes">
+						Genel mimariyi detaylica anlat… oncelikle websocket'ten basla ardindan devam et… tabiki basit bir mimariden bahsettigimizi soyle…  burada herhangi bir gecici veya kalici bir veritabani bulunmadigindan bahset… Simdi size bu mimariyi teker teker anlatip olusturmaya calisacagini anlat.
 					</aside>
 				</section>
 
@@ -152,6 +165,7 @@
 						<li class="fragment">Ajax ve Ajax Long Polling'deki fazlalıkları atar</li>
 					</ul>
 					<aside class="notes">
+						Oncelikle client tarafindan baslarsak websocket ile baslayacagini anlat… Websocket'in ozelliklerini teker teker anlat. Ozellikle Ajax ve Ajax Long Polling arasindaki farki anlat… Simdi birazda nasil kodlandigini anlat...
 					</aside>
 				</section>
 
@@ -160,7 +174,7 @@
 					<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;	
   var ws = new WebSocket(&quot;ws://example.com:10081/&quot;);
   ws.onopen = function() {
-    ws.send(&quot;Hello&quot;);  // Sends a message.
+    ws.send(&quot;Hello&quot;);  // Mesaji gonder
   };
   ws.onmessage = function(e) {
     // Mesaj Geldi Olayi
@@ -172,6 +186,7 @@
   };
 &lt;/script&gt;</code></pre>
 					<aside class="notes">
+						Ilk ornegimiz bizim browser'imiz HTML 5 destekli ve WebSocket destekliyorsa, nasil calistirabilecegimizi ve kod detayini anlat...
 					</aside>
 				</section>
 
@@ -183,6 +198,7 @@
 						<li class="fragment">Tamamen WebSocket API benzeri bir API'a sahiptir</li>
 					</ul>
 					<aside class="notes">
+						Ikinci olarak web-socket-js'i anlat. neden ihtiyac duydugumuzu soyle. browser desteklemesse web-socket-js tarafindan flash socket'i kullanarak ayni websocket api'yi kullanabilecegimizi anlat.
 					</aside>
 				</section>
 
@@ -196,7 +212,7 @@
   // WebSocket API'la ayni API oldugundan aynen kullaniyoruz
   var ws = new WebSocket(&quot;ws://example.com:10081/&quot;);
   ws.onopen = function() {
-    ws.send(&quot;Hello&quot;);  // Sends a message.
+    ws.send(&quot;Hello&quot;);  // Mesaji gonder
   };
   ws.onmessage = function(e) {
     // Mesaj Geldi Olayi
@@ -207,6 +223,7 @@
   };
 &lt;/script&gt;</code></pre>
 					<aside class="notes">
+						Kod ornegini ve ozellikle api'in tamamen ayni oldugunu anlat...
 					</aside>
 				</section>				
 
@@ -227,6 +244,7 @@
 						</li>
 					</ul>
 					<aside class="notes">
+						Simdi ise artik client tarafini halletigimizi, artik bu web socketi karsilayabilecek bir websocket server'a ihtiyacimiz oldugunu anlat… burada neden asenkron i/o bir web server'a ihtiyacimiz oldugunu low latency ornegiyle beraber anlat… Daha sonra teker teker python ve ruby'deki kutuphaneleri sirala...
 					</aside>
 				</section>
 
@@ -258,6 +276,7 @@ if __name__ == "__main__":
     http_server.listen(8888)
     tornado.ioloop.IOLoop.instance().start()</code></pre>
     				<aside class="notes">
+    					Oncelikle Python'dan basla… Python'da oldukca iyi bir Asenkron I/O calisan tornado web server'i anlat. Friendfeed'in gucunu aldigi bir web server'dir… Kodu anlat… teker teker iyice anlat...
 					</aside>
 				</section>
 
@@ -281,12 +300,14 @@ EM.run {
   end
 }</code></pre>
 					<aside class="notes">
+						Sonra ruby'den bahset… Ruby'deki eventmachine anlat… yine asenkron i'o calistigini soyle… sonra kodu anlat… cok benzer olduklarini soyle...
 					</aside>
 				</section>
 
 				<section>
 					<h2>Demo - WebSocket Server</h2>
 					<aside class="notes">
+						Simdi kodlari teker teker ac ve calistir… python ile websocket-js, ruby ile websocket dikkatli ol…
 					</aside>
 				</section>
 
@@ -300,6 +321,7 @@ EM.run {
 						<li class="fragment">Kullananlar: BBC, NASA, Digg, SecondLife, Del.icio.us, Huffington Post</li>
 					</ul>
 					<aside class="notes">
+						Simdi ise gelen mesajlarin kontrolu saglayan, bir mesaj kuyrugu yapisi olan rabbitmq 'yu anlat… detaylarini teker teker anlat… niye ihtiyac duydugumuzu soyle… kendi tecrubeni yani process queue olarak kullandigini ve cok memnun oldugunu soyle… butun ozelliklerini guzelce detaylandirarak anlat...
 					</aside>
 				</section>
 
@@ -318,6 +340,7 @@ EM.run {
 						</li>
 					</ul>
 					<aside class="notes">
+						Yine rabbitmq'ya erisebilmek icin uygun olan python ve ruby'deki kutuphaneler anlat kisaca… her ikiside asenkron calisabildigini soyle...
 					</aside>
 				</section>
 
@@ -330,14 +353,15 @@ connection = pika.BlockingConnection(pika.ConnectionParameters(
         host='localhost'))
 channel = connection.channel()
 
-channel.queue_declare(queue='tasks')
+channel.queue_declare(queue='jspyconftest')
 
 channel.basic_publish(exchange='',
-                      routing_key='tasks',
+                      routing_key='jspyconftest',
                       body='Hello World!')
 print " [x] Sent 'Hello World!'"
 connection.close()</code></pre>
 					<aside class="notes">
+						Pika'nin publisher kismini anlatmaya basla… teker teker her bir satiri anlat… buradan mesajlarin gonderildigini ve kuyruga girdigini anlat...
 					</aside>
 				</section>	
 
@@ -349,18 +373,19 @@ import pika
 connection = pika.BlockingConnection(pika.ConnectionParameters(
         host='localhost'))
 channel = connection.channel()
-channel.queue_declare(queue='tasks')
+channel.queue_declare(queue='jspyconftest')
 print ' [*] Mesajlar Bekleniyor. Cikmak icin CTRL+C'
 
 def callback(ch, method, properties, body):
     print " [x] Received %r" % (body,)
 
 channel.basic_consume(callback,
-                      queue='tasks',
+                      queue='jspyconftest',
                       no_ack=True)
 
 channel.start_consuming()</code></pre>
 					<aside class="notes">
+						Pika'nin subscriber yani mesajalri kuyruk yapisindan alip isleyen yerlerdir… buradaki kod yapisini anlat… ozellikle callback kismini anlat...
 					</aside>
 				</section>
 
@@ -372,7 +397,7 @@ EventMachine.run do
   puts "AMQP Broker a baglanildi."
  
   channel  = AMQP::Channel.new(connection)
-  queue    = channel.queue("amqpgem.examples.helloworld", :auto_delete => true)
+  queue    = channel.queue("jspyconftest", :auto_delete => true)
   exchange = channel.direct("")
  
   queue.subscribe do |payload|
@@ -383,6 +408,7 @@ EventMachine.run do
   exchange.publish "Hello, world!", :routing_key => queue.name
 end</code></pre>
 					<aside class="notes">
+						Ruby'de bu islerin nasil olarak anlatildigini anlat… teker teker kodlari anlat...
 					</aside>
 				</section>	
 
@@ -416,12 +442,14 @@ AMQP.start("amqp://dev.rabbitmq.com:5672") do |connection|
  end
 end</code></pre>
 					<aside class="notes">
+						Ikinci kodda ise bir tane mesaj yollandiginda bu mesaji uc farkli mesaj alici tarafindan alindigi bir ornegi goster… kodu anlat…
 					</aside>
 				</section>
 
 				<section>
 					<h2>Demo</h2>
 					<aside class="notes">
+						RabbitMQ'daki ornegi hem python da hem de kodda anlat… demoyu calistir… rabbitmq'nun vagrant'ta olusturulmus olan bir sanal makinede oldugunu soyle…
 					</aside>
 				</section>	
 
@@ -434,6 +462,7 @@ end</code></pre>
 						<li class="fragment">Protokolün detayları için: <a href="http://www.xmpp.org">XMPP Foundation</a></li>
 					</ul>
 					<aside class="notes">
+						Artik mimarinin son bolumu olan XMPP kismini anlat… xmpp protikolunu anlat… burada xmpp'yi kullanmanin tek amacinin jabber client'a yani gtalk gibi bir client mesaj yollamak odlugunu anlat… teker teker ozelliklerini soyle… aslinda rabbitmq gibi bir mesaj kuyrugu yapisina da sahip oldugunu soyle… orneklerini anlat...
 					</aside>
 				</section>
 
@@ -441,6 +470,7 @@ end</code></pre>
 					<h2>XMPP - Mimari</h2>
 					<img src="img/xmpp-wikibooks.png">
 					<aside class="notes">
+						genel mimariden bahset… merkezi olmadigini, tamamen lokal merkezlerin olustugu ve birbirleriyle haberlesildigini bir ornek ile anlat… ahmet@jabber.org ile mehmet@gmail.com nasil haberlestigini anlat...
 					</aside>
 				</section>
 
@@ -459,6 +489,7 @@ end</code></pre>
 						</li>
 					</ul>
 					<aside class="notes">
+						xmpp'yi kullanabilmemizi saglayan client'lari anlat… iste python da bu ruby de su var fln de...
 					</aside>
 				</section>
 
@@ -467,7 +498,7 @@ end</code></pre>
 					<pre><code>import sys
 import sleekxmpp
 def main(): 
-  bot = EchoBot("jspyconftest@jabber.org", "12345678")
+  bot = EchoBot("jspyconftest@ufuks-macbook-pro.local", "12345")
   bot.run() 
 
 class EchoBot: 
@@ -483,7 +514,7 @@ class EchoBot:
   def handleXMPPConnected(self, event):
     print "Baglandi" 
     self.xmpp.sendPresence(pstatus = "Send me a message")
-    self.xmpp.sendMessage("jspyconftest@jabber.org","Hello World")
+    self.xmpp.sendMessage("jspyconftest@ufuks-macbook-pro.local","Hello World")
 
   def handleIncomingMessage(self, message): 
     self.xmpp.sendMessage(message["from"], message["body"]) 
@@ -491,6 +522,7 @@ class EchoBot:
 if __name__ == "__main__" :
     main()</code></pre>
 					<aside class="notes">
+						sonra python kismini anlat…  kodlari ayrintili bir sekilde anlat...
 					</aside>
 				</section>
 
@@ -505,16 +537,16 @@ hash['xmpp4r'] = 'Simple XMPP library for ruby'
 hash['xmpp'] = 'Extensible Messaging and Presence Protocol'
 
 # XMPP Server baglan ve kullanici adi ve sifreyi dogrula
-jid = Jabber::JID::new('jspyconftest@jabber.org')
+jid = Jabber::JID::new('jspyconftest@ufuks-macbook-pro.local')
 cl = Jabber::Client::new(jid)
 cl.connect
-cl.auth('12345678')
+cl.auth('12345')
 
 # Baglandigini ve online oldugunu bildir
 cl.send Jabber::Presence::new
 
 # Belirtilen Client'a mesaj yolla
-salutation = Jabber::Message::new( 'jspyconftest@jabber.org', 'DictBot ready' )
+salutation = Jabber::Message::new( 'jspyconftest@ufuks-macbook-pro.local', 'DictBot ready' )
 salutation.set_type(:chat).set_id('1')
 cl.send salutation 
 
@@ -533,12 +565,14 @@ end
 while 1
 end</code></pre>	
 					<aside class="notes">
+						ruby kismini anlat...
 					</aside>
 				</section>				
 
 				<section>
 					<h2>Olark Clone Demo</h2>
 					<aside class="notes">
+						ve son olarak artik olark'a benzer basit bir yapiyi anlat… yani web'den jabber client'a nasil aktarildigini anlat… ve ruby'de yazildigini python'a zaman kalmadigini ancak devam edip onunda tamamlanacagini ve demoyu anlat…  github'dan takip edebilirsiniz de...
 					</aside>
 				</section>
 
@@ -551,12 +585,14 @@ end</code></pre>
 						<li class="fragment">XMPP Protokolü: Python SleekXMPP, Ruby XMPP4R</li>
 					</ul>
 					<aside class="notes">
+						sonucu anlat… teker teker ozetle...
 					</aside>
 				</section>
 
 				<section>
 					<h1>Sorular!</h1>
 					<aside class="notes">
+						varsa sorusu olanlari duymaktan memnuniyet duyacagini soyle...
 					</aside>
 				</section>
 
@@ -567,6 +603,7 @@ end</code></pre>
 					<p>Twitter: <a href="https://twitter.com/emrahayanoglu">@emrahayanoglu</a></p>
 					<p>Github: <a href="https://github.com/emrahayanoglu">emrahayanoglu</a></p>
 					<aside class="notes">
+						boyle iyi bir izleyiciye konusmanin bir zevk oldugunu soyle… beni dinlediginiz icin tesekkur et…
 					</aside>
 				</section>
 

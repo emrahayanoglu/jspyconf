@@ -1,7 +1,7 @@
 import sys
 import sleekxmpp
 def main(): 
-  bot = EchoBot("jspyconftest@jabber.org", "12345678")
+  bot = EchoBot("jspyconftest@ufuks-macbook-pro.local", "12345")
   bot.run() 
 
 class EchoBot: 
@@ -17,7 +17,7 @@ class EchoBot:
   def handleXMPPConnected(self, event):
     print "Connected" 
     self.xmpp.sendPresence(pstatus = "Send me a message")
-    self.xmpp.sendMessage("jspyconftest@jabber.org","Hello World")
+    self.xmpp.sendMessage("jspyconftest@ufuks-macbook-pro.local","Hello World")
 
   def handleIncomingMessage(self, message): 
     self.xmpp.sendMessage(message["from"], message["body"]) 
