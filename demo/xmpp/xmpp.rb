@@ -2,10 +2,10 @@ require 'rubygems'
 require 'xmpp4r/client'
 require 'amqp'
 
-jid = Jabber::JID::new('jspyconftest@jabber.org')
+jid = Jabber::JID::new('jspyconftest@ufuks-macbook-pro.local')
 cl = Jabber::Client::new(jid)
 cl.connect
-cl.auth('12345678')
+cl.auth('12345')
 
 cl.send Jabber::Presence::new
 
@@ -19,13 +19,13 @@ EventMachine.run do
 	exchange = channel.direct("")
 
 	queueSend.subscribe do |payload|
-		message = Jabber::Message::new( 'jspyconftest@jabber.org', payload )
+		message = Jabber::Message::new( 'jspyconftest@ufuks-macbook-pro.local', payload )
 		message.set_type(:chat).set_id('1')
 		cl.send message 
 	end
  
 	cl.add_message_callback do |inmsg|
-		if inmsg.from != "jspyconftest@jabber.org"
+		if inmsg.from != "jspyconftest@ufuks-macbook-pro.local"
 			puts "Received Message From Jabber: #{inmsg.body}"
 			exchange.publish inmsg.body, :routing_key => queueReceive.name
 		end
